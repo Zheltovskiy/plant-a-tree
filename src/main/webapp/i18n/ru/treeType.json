@@ -1,0 +1,10 @@
+{
+    "plantATreeApp": {
+        "TreeType" : {
+            "null": "",
+            "SPRUCE": "SPRUCE",
+            "CEDAR": "CEDAR",
+            "PINE": "PINE"
+        }
+    }
+}

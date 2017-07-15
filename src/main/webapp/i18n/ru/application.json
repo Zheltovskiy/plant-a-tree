@@ -1,0 +1,27 @@
+{
+    "plantATreeApp": {
+        "application" : {
+            "home": {
+                "title": "Applications",
+                "createLabel": "Создать новый Application",
+                "createOrEditLabel": "Создать или отредактировать Application"
+            },
+            "created": "Новый Application создан с идентификатором {{ param }}",
+            "updated": "Application обновлен с идентификатором {{ param }}",
+            "deleted": "Application удален с идентификатором {{ param }}",
+            "delete": {
+                "question": "Вы уверены что хотите удалить Application {{ id }}?"
+            },
+            "detail": {
+                "title": "Application"
+            },
+            "type": "Type",
+            "placeLatitude": "Place Latitude",
+            "placeLongitude": "Place Longitude",
+            "seedDate": "Seed Date",
+            "seedingDate": "Seeding Date",
+            "event": "Event",
+            "user": "User"
+        }
+    }
+}

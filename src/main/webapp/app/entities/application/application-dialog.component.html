@@ -1,0 +1,104 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myApplicationLabel" jhiTranslate="plantATreeApp.application.home.createOrEditLabel">Create or edit a Application</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!application.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="application.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plantATreeApp.application.type" for="field_type">Type</label>
+            <select class="form-control" name="type" [(ngModel)]="application.type" id="field_type"  required>
+                <option value="SPRUCE" jhiTranslate="plantATreeApp.TreeType.SPRUCE">SPRUCE</option>
+                <option value="CEDAR" jhiTranslate="plantATreeApp.TreeType.CEDAR">CEDAR</option>
+                <option value="PINE" jhiTranslate="plantATreeApp.TreeType.PINE">PINE</option>
+            </select>
+            <div [hidden]="!(editForm.controls.type?.dirty && editForm.controls.type?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.type?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plantATreeApp.application.placeLatitude" for="field_placeLatitude">Place Latitude</label>
+            <input type="number" class="form-control" name="placeLatitude" id="field_placeLatitude"
+                [(ngModel)]="application.placeLatitude" required />
+            <div [hidden]="!(editForm.controls.placeLatitude?.dirty && editForm.controls.placeLatitude?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.placeLatitude?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.placeLatitude?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plantATreeApp.application.placeLongitude" for="field_placeLongitude">Place Longitude</label>
+            <input type="number" class="form-control" name="placeLongitude" id="field_placeLongitude"
+                [(ngModel)]="application.placeLongitude" required />
+            <div [hidden]="!(editForm.controls.placeLongitude?.dirty && editForm.controls.placeLongitude?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.placeLongitude?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.placeLongitude?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plantATreeApp.application.plateText" for="field_plateText">Plate Text</label>
+            <input type="number" class="form-control" name="plateText" id="field_plateText"
+                [(ngModel)]="application.plateText"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plantATreeApp.application.seedingDate" for="field_seedingDate">Seeding Date</label>
+            <div class="input-group">
+                <input id="field_seedingDate" type="text" class="form-control" name="seedingDate" ngbDatepicker  #seedingDateDp="ngbDatepicker" [(ngModel)]="application.seedingDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="seedingDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="plantATreeApp.application.event" for="field_event">Event</label>
+            <select class="form-control" name="event" [(ngModel)]="application.event" id="field_event" >
+                <option value="OTHER" jhiTranslate="plantATreeApp.EventType.OTHER">OTHER</option>
+                <option value="WEDDING" jhiTranslate="plantATreeApp.EventType.WEDDING">WEDDING</option>
+                <option value="CHILD_BIRTH" jhiTranslate="plantATreeApp.EventType.CHILD_BIRTH">CHILD_BIRTH</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="plantATreeApp.application.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="application.user"  required>
+                <option [ngValue]="userOption.id === application.user?.id ? application.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.login}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.user?.dirty && editForm.controls.user?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.user?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

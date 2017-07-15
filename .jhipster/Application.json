@@ -1,0 +1,58 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "login",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "application"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "TreeType",
+            "fieldValues": "SPRUCE,CEDAR,PINE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "placeLatitude",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "placeLongitude",
+            "fieldType": "Double",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "seedDate",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "seedingDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "event",
+            "fieldType": "EventType",
+            "fieldValues": "OTHER,WEDDING,CHILD_BIRTH"
+        }
+    ],
+    "changelogDate": "20170715062432",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "application",
+    "pagination": "no"
+}

@@ -1,0 +1,10 @@
+{
+    "plantATreeApp": {
+        "EventType" : {
+            "null": "",
+            "OTHER": "OTHER",
+            "WEDDING": "WEDDING",
+            "CHILD_BIRTH": "CHILD_BIRTH"
+        }
+    }
+}
